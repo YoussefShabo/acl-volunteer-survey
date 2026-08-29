@@ -1,4 +1,4 @@
-const { appendResponse, isConfigured, listResponses } = require('./_sheets');
+const { appendResponse, isConfigured, listResponses } = require('../lib/sheets');
 
 function validResponse(payload) {
   return payload && typeof payload.name === 'string' && payload.name.trim() && typeof payload.email === 'string' && payload.email.trim() && Array.isArray(payload.shifts) && payload.shifts.length;

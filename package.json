@@ -1,0 +1,13 @@
+{
+  "name": "event-crew-survey",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Volunteer shift survey with Google Sheets storage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "googleapis": "^161.0.0"
+  }
+}

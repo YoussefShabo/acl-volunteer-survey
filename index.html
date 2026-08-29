@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Volunteer shift sign-up for the event weekends on October 2, 3, 4, 9, 10, and 11.">
+  <title>Volunteer shifts | Event crew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero-copy">
+        <p class="eyebrow">BRB EVENT CREW / VOLUNTEER INTAKE</p>
+        <h1>Pick your moments<br><em>on the floor.</em></h1>
+        <p class="hero-intro">Tell us when you can be part of the team across both event weekends. Select as many shifts as you like.</p>
+      </div>
+      <div class="event-stamp"><span>EVENT DATES</span><strong>OCT 02—11</strong><small>FRI—SUN · 2026</small></div>
+    </header>
+
+    <section class="section-heading" aria-labelledby="availability-title">
+      <div>
+        <p class="eyebrow">01 / YOUR AVAILABILITY</p>
+        <h2 id="availability-title">Choose your shifts</h2>
+      </div>
+      <p class="section-note"><span class="legend-dot"></span> Click any block to add or remove it.<br>There’s no limit to your selections.</p>
+    </section>
+
+    <form id="signup-form" novalidate>
+      <div class="matrix-wrap">
+        <div class="shift-matrix" id="shift-matrix"></div>
+      </div>
+      <p class="selection-status" aria-live="polite"><strong id="selected-count">0 shifts</strong> selected <span>·</span> Choose one or more to continue</p>
+
+      <section class="details-section" aria-labelledby="details-title">
+        <div class="section-heading compact">
+          <div><p class="eyebrow">02 / YOUR DETAILS</p><h2 id="details-title">Make it yours</h2></div>
+          <p class="section-note">We’ll only use this to coordinate the schedule.</p>
+        </div>
+        <div class="details-grid">
+          <label class="field"><span>Your name <b>*</b></span><input id="name" name="name" type="text" autocomplete="name" placeholder="First and last name" required></label>
+          <label class="field"><span>Email address <b>*</b></span><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label class="field field-wide"><span>Anything we should know? <i>optional</i></span><textarea id="note" name="note" rows="3" placeholder="Access needs, preferred role, or a note for the organizer"></textarea></label>
+        </div>
+        <div class="submit-row">
+          <p><span class="lock-mark">◎</span> Your response is saved in this browser.</p>
+          <button class="primary-button" type="submit">Send availability <span aria-hidden="true">↗</span></button>
+        </div>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </section>
+    </form>
+
+    <section class="organizer" id="organizer" aria-labelledby="organizer-title">
+      <div class="organizer-top">
+        <div><p class="eyebrow">ORGANIZER VIEW</p><h2 id="organizer-title">The roster, in one place.</h2></div>
+        <div class="organizer-actions"><button class="text-button" id="export-button" type="button">Export CSV <span>↓</span></button><button class="close-button" id="close-organizer" type="button" aria-label="Close organizer view">×</button></div>
+      </div>
+      <div class="roster-summary"><div><strong id="response-count">0</strong><span>responses</span></div><div><strong id="shift-count">0</strong><span>shift commitments</span></div><label class="search"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search volunteers" aria-label="Search volunteers"></label></div>
+      <div class="roster-table-wrap"><table><thead><tr><th>Volunteer</th><th>Contact</th><th>Selected shifts</th><th>Note</th><th></th></tr></thead><tbody id="roster-body"></tbody></table><p class="empty-state" id="empty-state">No volunteer responses yet.</p></div>
+    </section>
+
+    <footer><span>EVENT CREW INTAKE</span><button id="open-organizer" class="organizer-link" type="button">Open organizer view <span>↗</span></button><span>OCTOBER 2026</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

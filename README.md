@@ -21,3 +21,13 @@ Volunteers can select any number of shifts across October 2, 3, 4, 9, 10, and 11
 6. Run `npm start` and open `http://localhost:4173/`.
 
 The backend creates the header row automatically and appends each response to the Sheet. Keep `.env` and `service-account.json` private. Until the Sheet is configured, the browser uses its local fallback storage.
+
+## Vercel deployment
+
+In the Vercel project settings, add these environment variables for Production (and Preview if needed):
+
+- `GOOGLE_SHEET_ID`: the ID from the Google Sheet URL
+- `GOOGLE_SHEET_TAB`: `Responses`
+- `GOOGLE_SERVICE_ACCOUNT_JSON`: the complete contents of the service-account JSON file
+
+Redeploy after adding the variables. Vercel uses `api/health.js` and `api/responses.js` as serverless functions; do not upload the JSON key into the repository.

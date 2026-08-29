@@ -7,13 +7,20 @@ const sheetTab = process.env.GOOGLE_SHEET_TAB || 'Responses';
 let sheets;
 
 function getCredentials() {
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
-    const value = process.env.GOOGLE_SERVICE_ACCOUNT_JSON.trim();
-    if (value.startsWith('{')) return JSON.parse(value);
-    if (fs.existsSync(path.resolve(value))) return JSON.parse(fs.readFileSync(path.resolve(value), 'utf8'));
+  try {
+    if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+      const value = process.env.GOOGLE_SERVICE_ACCOUNT_JSON.trim();
+      if (value.startsWith('{')) return JSON.parse(value);
+      if (fs.existsSync(path.resolve(value))) return JSON.parse(fs.readFileSync(path.resolve(value), 'utf8'));
+    }
+    const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+    const privateKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
+    if (email && privateKey) return { client_email: email, private_key: privateKey.replace(/\\n/g, '\n') };
+    const file = path.resolve(process.env.GOOGLE_SERVICE_ACCOUNT_JSON_PATH || './service-account.json');
+    if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (error) {
+    console.error('Invalid Google Sheets credentials:', error.message);
   }
-  const file = path.resolve(process.env.GOOGLE_SERVICE_ACCOUNT_JSON_PATH || './service-account.json');
-  if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, 'utf8'));
   return null;
 }
 function isConfigured() {

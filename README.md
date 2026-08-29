@@ -30,4 +30,6 @@ In the Vercel project settings, add these environment variables for Production (
 - `GOOGLE_SHEET_TAB`: `Responses`
 - `GOOGLE_SERVICE_ACCOUNT_JSON`: the complete contents of the service-account JSON file
 
+Alternatively, use `GOOGLE_SERVICE_ACCOUNT_EMAIL` and `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` as separate variables if Vercel does not accept the JSON value cleanly.
+
 Redeploy after adding the variables. Vercel uses `api/health.js` and `api/responses.js` as serverless functions; do not upload the JSON key into the repository.

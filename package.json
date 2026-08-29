@@ -5,7 +5,7 @@
   "description": "Volunteer shift survey with Google Sheets storage",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node local-server.js"
   },
   "dependencies": {
     "googleapis": "^161.0.0"

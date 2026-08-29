@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "buildCommand": "",
   "functions": {
     "api/*.js": {
       "runtime": "nodejs22.x"

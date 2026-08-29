@@ -1,6 +1,5 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { google } = require('googleapis');
 
 const sheetId = process.env.GOOGLE_SHEET_ID;
 const sheetTab = process.env.GOOGLE_SHEET_TAB || 'Responses';
@@ -28,6 +27,7 @@ function isConfigured() {
 }
 async function getSheets() {
   if (sheets) return sheets;
+  const { google } = require('googleapis');
   const credentials = getCredentials();
   if (!sheetId || !credentials) throw new Error('Google Sheets environment variables are not configured.');
   const auth = new google.auth.GoogleAuth({ credentials, scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
